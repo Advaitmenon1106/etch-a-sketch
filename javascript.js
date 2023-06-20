@@ -1,16 +1,22 @@
-function appendMultiple(item, parent){
-    parent.appendChild(item);
-}
+const textBox = document.getElementById('noOfSquares');
+const enterButton = document.getElementById('enterButton');
+const outerBox = document.getElementById('outerBox');
+const gridUnit = document.createElement('div');
+gridUnit.style.border = '3px solid black';
+outerBox.style.display = 'flex';
+gridUnit.style.flex = '1';
 
-const unitSquare = document.createElement('div');
-const row = document.createElement('div')
-const br = document.createElement('br')
-row.style.cssText = "display: flex; height: 960px; width: fit-content; align-content: space-around";
-const outerSquare = document.querySelector('#largerBox')
-unitSquare.style.cssText = 'border: 3px solid black; width: 60px; height: 60px; flex:1';
-counter = 0
-for (i = 0; i<7; i++){
-    outerSquare.appendChild(row);
-    row.appendChild(unitSquare.cloneNode(true));
-    outerSquare.appendChild(br);    
-}
+
+enterButton.addEventListener('click', ()=>{
+    x = parseInt(textBox.value);
+    gridUnit.style.width = 960/x+'px';
+    gridUnit.style.height = 960/x+'px';
+
+    outerBox.innerHTML = '';
+
+    for (i = 0; i<x; i++){
+        
+        outerBox.appendChild(gridUnit.cloneNode(true));
+        
+    }
+})
