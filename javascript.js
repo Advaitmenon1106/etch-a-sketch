@@ -6,7 +6,6 @@ gridUnit.style.border = '3px solid black';
 outerBox.style.display = 'flex';
 gridUnit.style.flex = '1';
 
-
 enterButton.addEventListener('click', ()=>{
     x = parseInt(textBox.value);
     gridUnit.style.width = 960/x+'px';
@@ -15,8 +14,10 @@ enterButton.addEventListener('click', ()=>{
     outerBox.innerHTML = '';
 
     for (i = 0; i<x; i++){
-        
-        outerBox.appendChild(gridUnit.cloneNode(true));
-        
+        var row = document.createElement('div');
+        outerBox.appendChild(row);
+        for (j = 0; j<x; j++){
+            row.appendChild(gridUnit.cloneNode(true));
+        }
     }
 })
