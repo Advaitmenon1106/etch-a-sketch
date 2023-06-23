@@ -22,6 +22,7 @@ enterButton.addEventListener('click', ()=>{
         outerBox.appendChild(row);
         for (j = 0; j<x; j++){
             const gridUnit = document.createElement('div');
+            gridUnit.className = 'gridUnit'
             gridUnit.style.width = 960/x+'px';
             gridUnit.style.border = '3px solid black';
             gridUnit.style.height = 960/x+'px';
@@ -29,5 +30,19 @@ enterButton.addEventListener('click', ()=>{
             row.appendChild(gridUnit);
         }
     }
-})
+    let buttonDiv2 = document.createElement('div');
+    let resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset Colours';
+    resetButton.style.height = '100px';
+    resetButton.style.width = '150px';
+    resetButton.style.marginTop = '480px';
+    resetButton.style.marginLeft = '50%';
+    outerBox.appendChild(buttonDiv2);
+    buttonDiv2.appendChild(resetButton);
 
+    resetButton.addEventListener('click', ()=>{
+        for (i = 0; i<document.getElementsByClassName('gridUnit').length; i++){
+            document.getElementsByClassName('gridUnit')[i].style.backgroundColor = 'rgb(255, 255, 255)'
+        }
+    })
+})
