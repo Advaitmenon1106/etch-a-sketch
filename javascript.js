@@ -1,23 +1,33 @@
+function hover(event){
+    event.target.style.backgroundColor = 'rgb('+Math.random()*256+', '+Math.random()*256+', '+Math.random()*256+')';
+}
+
 const textBox = document.getElementById('noOfSquares');
 const enterButton = document.getElementById('enterButton');
 const outerBox = document.getElementById('outerBox');
-const gridUnit = document.createElement('div');
-gridUnit.style.border = '3px solid black';
+
+//gridUnit.setAttribute('id', 'gridUnit');
+
 outerBox.style.display = 'flex';
-gridUnit.style.flex = '1';
+outerBox.style.marginTop = '3%';
 
 enterButton.addEventListener('click', ()=>{
     x = parseInt(textBox.value);
-    gridUnit.style.width = 960/x+'px';
-    gridUnit.style.height = 960/x+'px';
-
+    
     outerBox.innerHTML = '';
 
     for (i = 0; i<x; i++){
-        var row = document.createElement('div');
+        let row = document.createElement('div');
+        row.style.flex = '1';
         outerBox.appendChild(row);
         for (j = 0; j<x; j++){
-            row.appendChild(gridUnit.cloneNode(true));
+            const gridUnit = document.createElement('div');
+            gridUnit.style.width = 960/x+'px';
+            gridUnit.style.border = '3px solid black';
+            gridUnit.style.height = 960/x+'px';
+            gridUnit.onmouseenter = hover;
+            row.appendChild(gridUnit);
         }
     }
 })
+
